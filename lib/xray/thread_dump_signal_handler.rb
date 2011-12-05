@@ -1,9 +1,9 @@
 #
 # Install a signal handler to dump backtraces for all threads
 #
-# Trigger it with: kill -QUIT <pid>
+# Trigger it with: kill -CONT <pid>
 #  
-trap "QUIT" do
+trap "CONT" do
   if Kernel.respond_to? :caller_for_all_threads
     STDERR.puts "\n=============== XRay - Thread Dump ==============="
     caller_for_all_threads.each_pair do |thread, stack|
